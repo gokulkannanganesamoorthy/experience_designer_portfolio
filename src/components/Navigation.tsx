@@ -30,9 +30,7 @@ export default function Navigation() {
       
       <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-soft-gray">
         <Link href="#work" className="hover:text-white transition-colors">Work</Link>
-        <Link href="#about" className="hover:text-white transition-colors">About</Link>
-        <Link href="#thinking" className="hover:text-white transition-colors">Thinking</Link>
-        <Link href="#contact" className="hover:text-white transition-colors">Contact</Link>
+        <Link href="#links" className="hover:text-white transition-colors">Links</Link>
       </nav>
 
       <button className="md:hidden text-sm font-medium hover:text-soft-gray transition-colors">

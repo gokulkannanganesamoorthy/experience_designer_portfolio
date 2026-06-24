@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -84,7 +85,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-pure-black text-pure-white selection:bg-warm-metallic selection:text-pure-black">
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
