@@ -1,69 +1,69 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 
 const links = [
-  { title: "Art Portfolio", url: "https://gokulkannanganesamoorthy.dev" },
-  { title: "SaaS Landing Page", url: "https://gokul-saasify.vercel.app" },
-  { title: "Neon Commerce", url: "https://gokul-neon-commerce.vercel.app" },
-  { title: "Photography", url: "https://gokul-photography-site.vercel.app" },
-  { title: "Dino Portfolio", url: "https://gokulkannanganesamoorthy-dino-portfolio.vercel.app" },
-  { title: "F1 Portfolio", url: "http://gokulkannanganesamoorthy.vercel.app" },
-  { title: "Luno Tech", url: "https://lunotech.in" },
-  { title: "Luno Shawarma", url: "http://luno-shawarma.netlify.app" },
-  { title: "Lexo", url: "https://ggokulkannan2006.wixsite.com/lexo" },
-  { title: "Satta Pai", url: "http://sattapai.netlify.app" },
-  { title: "GitHub", url: "http://github.com/gokulkannanganesamoorthy" },
-  { title: "LinkedIn", url: "http://linkedin.com/in/gokulkannanganesamoorthy/" },
-  { title: "Instagram", url: "https://www.instagram.com/gokulkannanganesamoorthy" },
+  { title: "Art Portfolio", url: "https://gokulkannanganesamoorthy.dev", x: "-30%", y: "-40%", scale: 1.2 },
+  { title: "SaaS Landing Page", url: "https://gokul-saasify.vercel.app", x: "20%", y: "-30%", scale: 0.9 },
+  { title: "Neon Commerce", url: "https://gokul-neon-commerce.vercel.app", x: "-10%", y: "-10%", scale: 1.5 },
+  { title: "Photography", url: "https://gokul-photography-site.vercel.app", x: "40%", y: "0%", scale: 0.8 },
+  { title: "Dino Portfolio", url: "https://gokulkannanganesamoorthy-dino-portfolio.vercel.app", x: "-40%", y: "20%", scale: 1.1 },
+  { title: "F1 Portfolio", url: "http://gokulkannanganesamoorthy.vercel.app", x: "10%", y: "30%", scale: 1.3 },
+  { title: "Luno Tech", url: "https://lunotech.in", x: "30%", y: "40%", scale: 1.0 },
+  { title: "Luno Shawarma", url: "http://luno-shawarma.netlify.app", x: "-20%", y: "50%", scale: 0.85 },
+  { title: "Lexo", url: "https://ggokulkannan2006.wixsite.com/lexo", x: "0%", y: "60%", scale: 0.95 },
+  { title: "GitHub", url: "http://github.com/gokulkannanganesamoorthy", x: "-35%", y: "-15%", scale: 0.9 },
+  { title: "LinkedIn", url: "http://linkedin.com/in/gokulkannanganesamoorthy/", x: "35%", y: "15%", scale: 1.1 },
+  { title: "Instagram", url: "https://www.instagram.com/gokulkannanganesamoorthy", x: "-25%", y: "35%", scale: 1.2 },
 ];
 
 export default function LinkTree() {
   return (
-    <section id="links" className="min-h-screen bg-pure-black py-32 px-6 flex flex-col items-center justify-center relative z-20 border-t border-white/5">
-      <div className="w-full max-w-3xl">
-        <div className="text-center mb-24">
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="w-24 h-24 mx-auto rounded-full bg-charcoal mb-8 border border-white/10 overflow-hidden"
+    <section id="links" className="relative h-screen bg-pure-black overflow-hidden flex flex-col items-center justify-center">
+      
+      {/* Background radial gradient to give depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-charcoal)_0%,_var(--color-pure-black)_60%)] opacity-30" />
+
+      <h2 className="absolute top-24 text-soft-gray uppercase tracking-[0.5em] text-xs font-medium z-10">
+        The Constellation
+      </h2>
+
+      <div className="relative w-full max-w-7xl h-[70vh] mx-auto">
+        {links.map((link, i) => (
+          <motion.a
+            key={i}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, scale: 0, x: link.x, y: link.y }}
+            whileInView={{ opacity: 1, scale: link.scale }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ 
+              duration: 1.5, 
+              delay: i * 0.1, 
+              ease: [0.16, 1, 0.3, 1] 
+            }}
+            whileHover={{ 
+              scale: link.scale * 1.1, 
+              color: "#ffffff",
+              textShadow: "0px 0px 20px rgba(255,255,255,0.8)" 
+            }}
+            className="absolute left-1/2 top-1/2 text-soft-gray/60 font-light whitespace-nowrap transition-colors duration-300 mix-blend-screen"
+            style={{ 
+              fontSize: `clamp(1rem, ${link.scale * 1.5}vw, 3rem)`,
+              transform: `translate(-50%, -50%)`,
+              zIndex: Math.floor(link.scale * 10)
+            }}
           >
-            {/* You can place an actual image here later */}
-            <div className="w-full h-full bg-gradient-to-br from-warm-metallic to-charcoal opacity-50" />
-          </motion.div>
-          <h2 className="text-4xl md:text-5xl font-medium text-white mb-4">Gokul Kannan</h2>
-          <p className="text-soft-gray font-light text-lg">Digital Experience Curator</p>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          {links.map((link, i) => (
-            <motion.a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative flex items-center justify-between p-6 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-white/20 transition-all duration-500 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-              <span className="text-xl font-light text-white group-hover:text-warm-metallic transition-colors relative z-10">
-                {link.title}
-              </span>
-              <ArrowUpRight className="text-soft-gray group-hover:text-warm-metallic transition-colors group-hover:rotate-45 relative z-10" />
-            </motion.a>
-          ))}
-        </div>
-
-        <div className="mt-32 text-center text-sm text-soft-gray/50 uppercase tracking-[0.2em]">
-          © {new Date().getFullYear()} Designed the Invisible.
-        </div>
+            {link.title}
+          </motion.a>
+        ))}
       </div>
+
+      <div className="absolute bottom-12 text-center text-[10px] text-white/30 uppercase tracking-[0.3em]">
+        © {new Date().getFullYear()} Gokul Kannan
+      </div>
+
     </section>
   );
 }

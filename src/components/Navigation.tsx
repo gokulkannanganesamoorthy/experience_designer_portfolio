@@ -1,41 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 transition-all duration-500 ${
-        scrolled ? "bg-pure-black/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-      }`}
-    >
-      <Link href="/" className="text-sm font-medium tracking-tight hover:text-soft-gray transition-colors">
-        Gokul Kannan
-      </Link>
-      
-      <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-soft-gray">
-        <Link href="#work" className="hover:text-white transition-colors">Work</Link>
-        <Link href="#links" className="hover:text-white transition-colors">Links</Link>
-      </nav>
+    <>
+      {/* Top Left Logo / Name */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="fixed top-8 left-8 z-50 mix-blend-difference pointer-events-none"
+      >
+        <span className="text-sm font-medium tracking-widest text-white uppercase">
+          Gokul<br/>Kannan
+        </span>
+      </motion.div>
 
-      <button className="md:hidden text-sm font-medium hover:text-soft-gray transition-colors">
-        Menu
-      </button>
-    </motion.header>
+      {/* Vertical Navigation - Right Edge */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.7 }}
+        className="fixed right-8 top-1/2 -translate-y-1/2 z-50 mix-blend-difference flex flex-col gap-16"
+      >
+        <a href="#work" className="text-xs uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors" style={{ writingMode: 'vertical-rl' }}>
+          Experiences
+        </a>
+        <a href="#links" className="text-xs uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors" style={{ writingMode: 'vertical-rl' }}>
+          Constellation
+        </a>
+      </motion.div>
+
+      {/* Bottom Left - Role */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.9 }}
+        className="fixed bottom-8 left-8 z-50 mix-blend-difference pointer-events-none"
+      >
+        <span className="text-xs font-light tracking-[0.2em] text-white/50 uppercase">
+          Digital Experience Curator
+        </span>
+      </motion.div>
+    </>
   );
 }
